@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Login and Signup</title>
+<link rel="stylesheet" href="css/navstyles.css">
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #e5f5ff;
+        color: #333;
+        margin: 0;
+        padding: 20px;
+    }
+    h2 {
+        color: #93e2fc;
+    }
+    form {
+        background-color: #a2bcd6;
+        padding: 20px;
+        border-radius: 10px;
+        margin-bottom: 20px;
+    }
+    label {
+        display: block;
+        margin-bottom: 8px;
+        color: #333;
+    }
+    input[type="text"],
+    input[type="password"],
+    input[type="email"] {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 10px;
+        border: 1px solid #93e2fc;
+        border-radius: 5px;
+    }
+    button {
+        background-color: #93e2fc;
+        color: #fff;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+    button:hover {
+        background-color: #caf0fe;
+    }
+    #login-result, #signup-result {
+        margin-top: 10px;
+        color: #333;
+    }
+</style>
+
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo">
+            <img src="images/zalogo.jpg" alt="Logo">
+        </div>
+        <ul class="nav-links">
+            <li><a href="index.html">Login</a></li>
+            <li><a href="lighthouses.php">Lighthouses</a></li>
+            <li><a href="events.php">Events</a></li>
+            <li><a href="merchandise.php">Merchandise</a></li>
+            <li><a href="cart.php">Shopping Cart</a></li>
+        </ul>
+    </nav>
+<h2>Login</h2>
+<form id="login-form">
+    <label for="login-username">Username:</label>
+    <input type="text" id="login-username" name="username" required>
+    <label for="login-password">Password:</label>
+    <input type="password" id="login-password" name="password" required>
+    <button type="submit">Login</button>
+</form>
+<div id="login-result"></div>
+
+<h2>Signup</h2>
+<form id="signup-form">
+    <label for="signup-username">Username:</label>
+    <input type="text" id="signup-username" name="username" required>
+    <label for="signup-password">Password:</label>
+    <input type="password" id="signup-password" name="password" required>
+    <label for="signup-email">Email:</label>
+    <input type="email" id="signup-email" name="email" required>
+    <button type="submit">Signup</button>
+</form>
+<div id="signup-result"></div>
+
+<script>
+$(document).ready(function() {
+    // Login form submission
+    $('#login-form').on('submit', function(event) {
+        event.preventDefault();
+        $.ajax({
+            type: 'POST',
+            url: 'login.php',
+            data: $(this).serialize(),
+            success: function(response) {
+                if (response.trim() === "success"){
+                    window.location.href = "lighthouses.php";
+                }else{
+                     $('#login-result').html(response);
+                }
+               
+            }
+        });
+    });
+
+    // Signup form submission
+    $('#signup-form').on('submit', function(event) {
+        event.preventDefault();
+        $.ajax({
+            type: 'POST',
+            url: 'signup.php',
+            data: $(this).serialize(),
+            success: function(response) {
+                $('#signup-result').html(response);
+            }
+        });
+    });
+});
+</script>
+</body>
+</html>

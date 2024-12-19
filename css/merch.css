@@ -1,0 +1,77 @@
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #e5f5ff; /* light blue background */
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+main {
+    flex: 1;
+    padding: 20px;
+    text-align: center;
+    background-color: #a2bcd6; /* blue-grey */
+}
+
+h1 {
+    color: #000; /* black text */
+    font-size: 2.5em;
+    margin-bottom: 20px;
+}
+
+#cart-message {
+    background-color: #93e2fc; /* medium blue */
+    color: #000; /* black text */
+    padding: 10px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    display: none; /* Hidden by default */
+}
+
+.merchandise-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+
+.merch-item {
+    background-color: #caf0fe; /* light cyan */
+    padding: 20px;
+    border-radius: 5px;
+    text-align: left;
+    width: 200px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.merch-item h3 {
+    font-size: 1.5em;
+    margin: 0 0 10px 0;
+}
+
+.merch-item p {
+    margin: 0 0 10px 0;
+}
+
+.merch-item button {
+    background-color: #93e2fc; /* medium blue */
+    color: #000; /* black text */
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.merch-item button:hover {
+    background-color: #a2bcd6; /* blue-grey */
+}
+
+footer {
+    background-color: #caf0fe; /* light cyan */
+    text-align: center;
+    padding: 10px;
+    color: #000; /* black text */
+}
